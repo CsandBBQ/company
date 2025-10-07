@@ -6,5 +6,4 @@ $sql = "DELETE FROM department WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":id", $id);
 $stmt->execute();
-
-echo ("Department wurde eingespart.");
+header('Location: ' . 'read_department.php');

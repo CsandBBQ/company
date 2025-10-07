@@ -28,5 +28,6 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);
     $stmt->execute();
+    header('Location: ' . 'read_department.php');
 
 }
