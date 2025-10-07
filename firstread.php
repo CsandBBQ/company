@@ -1,5 +1,6 @@
 <?php
 
+
 function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
 {
     $string = "<table>";
@@ -37,15 +38,20 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
     return $string;
 }
 
-$conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
-$sql = "SELECT * FROM employees";
+# Verbindung mit der Datenbank mit einem PDO Objekt
+$conn = new PDO('mysql:host=localhost;dbname=company', 'phpstorm', '123456');
+#Den Auszuführenden SQL Befehl
+$sql = 'SELECT * FROM employees';
+#Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes
 $stmt = $conn->prepare($sql);
+# Ausführen des SQL-Befehls
 $stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($result);
+# Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
 $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+
+
 <!doctype html>
 <html lang='en'>
 <head>
@@ -59,4 +65,3 @@ $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?= createTable($array) ?>
 </body>
 </html>
-
