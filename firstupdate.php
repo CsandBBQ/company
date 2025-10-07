@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </head>
     <body>
     <form action='' method='post'>
-        <input type="text" name=“fname“ placeholder='<?= $fname ?>'>
-        <input type="text" name=“lname“ placeholder='<?= $lname ?>'>
-        <input type="hidden" name=“id“ placeholder='<?= $id ?>'>
+        <input type="text" name=“fname“  placeholder= 'fname' value='<?= $fname ?>'>
+        <input type="text" name=“lname“ placeholder= 'lname' value='<?= $lname ?>'>
+        <input type="hidden" name=“id“ value='<?= $id ?>'>
         <input type="submit">
     </form>
     </body>
