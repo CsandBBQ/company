@@ -25,7 +25,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
                $checked =  $item === 1 ? "checked" : "unchecked";
                $string .= "<input type='checkbox' disabled " . $checked . ">";
             }
-            elseif ($key === 'workmode'){
+            /*elseif ($key === 'workmode'){
                 $checked = $item === 'onsite' ? "checked" : "";
                 $string .= "<input type='radio' id = 'onsite' name='workmode' value='onsite' disabled " . $checked .">";
                 $string .= "<label for='onsite'>onsite</label>";
@@ -37,7 +37,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
                 $checked = $item === 'remote' ? "checked" : "";
                 $string .= "<input type='radio' id = 'remote' name='workmode' value='remote' disabled " . $checked .">";
                 $string .= "<label for='remote'>remote</label>";
-            }
+            }*/
             else{
                 $string .= $item;
             }

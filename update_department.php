@@ -10,7 +10,6 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 $name = $result['name'];
 $is_hiring_box = $result["is_hiring"] === 1 ? "checked" : "unchecked";
 $workmode = $result["workmode"];
-echo $name;
 
 ?>
 
@@ -23,11 +22,11 @@ echo $name;
     <input type="text" name="name"  placeholder= "department name" value='<?= $name ?>'>
     <input type="checkbox" name="is_hiring" <?= $is_hiring_box ?>>
     <input type="hidden" name="id" value='<?= $id ?>'>
-    <input type="radio" id = "onsite" name="workmode" value="onsite" <?= $checked = $workmode === "onsite" ? "checked" : ""; ?>>
+    <input type="radio" id = "onsite" name="workmode" value="onsite" <?= $workmode === "onsite" ? "checked" : ""; ?>>
     <label for="onsite">onsite</label>
-    <input type="radio" id = "hybrid" name="workmode" value="hybrid" <?= $checked = $workmode === "hybrid" ? "checked" : ""; ?>>
+    <input type="radio" id = "hybrid" name="workmode" value="hybrid" <?= $workmode === "hybrid" ? "checked" : ""; ?>>
     <label for="hybrid">hybrid</label>
-    <input type="radio" id = "remote" name="workmode" value="remote" <?= $checked = $workmode === "remote" ? "checked" : ""; ?>>
+    <input type="radio" id = "remote" name="workmode" value="remote" <?= $workmode === "remote" ? "checked" : ""; ?>>
     <label for="remote">remote</label>
     <input type="submit">
 </form>

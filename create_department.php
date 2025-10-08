@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <input type='text' name='name' placeholder='department_name'>
     <label for="is_hiring"> Stellt ein:</label>
     <input type='checkbox' id =is_hiring' name='is_hiring'>
-    <input type="radio" id = "onsite" name="workmode" value="onsite">
+    <input type="radio" id = "onsite" name="workmode" value="onsite" checked>
     <label for="onsite">onsite</label>
     <input type="radio" id = "hybrid" name="workmode" value="hybrid">
     <label for="hybrid">hybrid</label>
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
-    $is_hiring = isset($_POST['is_hiring']);
+    $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
     $workmode = $_POST['workmode'];
     $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
     $sql = "INSERT INTO department (name, is_hiring, workmode) VALUES(:name, :is_hiring, :workmode)";
