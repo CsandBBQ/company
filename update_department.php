@@ -39,13 +39,16 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $workmode = $_POST['workmode'];
     $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
+    date_default_timezone_set("Europe/Berlin");
+    $date= date("Y-m-d H:i:s");
     $conn = new PDO("mysql:host=localhost;dbname=company", 'phpstorm', '123456');
-    $sql = "UPDATE department SET name = :name, is_hiring = :is_hiring, workmode = :workmode WHERE id = :id";
+    $sql = "UPDATE department SET name = :name, is_hiring = :is_hiring, workmode = :workmode, updated_at = :updated_at WHERE id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":name", $name);
     $stmt->bindParam(":is_hiring", $is_hiring);
     $stmt->bindParam(":workmode", $workmode);
     $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":updated_at", $date);
     $stmt->execute();
     header('Location: ' . 'read_department.php');
     exit();

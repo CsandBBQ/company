@@ -24,9 +24,11 @@ create table department
 
 ALTER table department ADD is_hiring bool default 0;
 ALTER TABLE department ADD workmode enum('onsite', 'hybrid','remote');
+ALTER TABLE department ADD created_at datetime;
+ALTER TABLE department ADD updated_at datetime;
 
 
 INSERT INTO department(name, is_hiring, workmode)
-values ('Peter', '0', 'remote'),
-       ('Donald', '1', 'onsite'),
-       ('George', '1', 'hybrid');
+values ('Feuerwehr', '0', 'remote'),
+       ('Urlauber', '1', 'onsite'),
+       ('Jongleur', '1', 'hybrid');

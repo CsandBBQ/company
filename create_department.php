@@ -33,12 +33,15 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
     $workmode = $_POST['workmode'];
+    date_default_timezone_set("Europe/Berlin");
+    $date= date("Y-m-d H:i:s");
     $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
-    $sql = "INSERT INTO department (name, is_hiring, workmode) VALUES(:name, :is_hiring, :workmode)";
+    $sql = "INSERT INTO department (name, is_hiring, workmode,created_at) VALUES(:name, :is_hiring, :workmode, :created_at)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':is_hiring', $is_hiring);
     $stmt->bindParam(':workmode', $workmode);
+    $stmt->bindParam(':created_at', $date);
     $stmt->execute();
     header('Location: ' . 'read_department.php');
     exit();
