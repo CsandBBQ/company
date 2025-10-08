@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <form action='' method='post'>
     <input type='text' name='name' placeholder='department_name'>
+    <input type='checkbox' name='is_hiring'>
     <input type='submit'>
 </form>
 </body>
@@ -23,10 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
+    $is_hiring = isset($_POST['is_hiring']);
     $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
-    $sql = "INSERT INTO department (name) VALUES(:name)";
+    $sql = "INSERT INTO department (name, is_hiring) VALUES(:name, :is_hiring)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':is_hiring', $is_hiring);
     $stmt->execute();
     header('Location: ' . 'read_department.php');
 

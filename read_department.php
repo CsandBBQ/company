@@ -19,9 +19,15 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             $color = $farbe_2;
         }
         $string .= "<tr  style='background-color: $color'>";
-        foreach ($user as $item) {
+        foreach ($user as $key => $item) {
             $string .= "<td>";
-            $string .= $item;
+            if ($key === 'is_hiring'){
+               $checked =  $item > 0 ? 'checked' : 'unchecked';
+               $string .= "<input type='checkbox' disabled " . $checked . ">";
+            }
+            else{
+                $string .= $item;
+            }
             $string .= "</td>";
         }
         $string .= "<td class='link' style='background-color: white'>";
