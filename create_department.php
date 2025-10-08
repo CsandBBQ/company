@@ -14,7 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <form action='' method='post'>
     <input type='text' name='name' placeholder='department_name'>
-    <input type='checkbox' name='is_hiring'>
+    <label for="is_hiring"> Stellt ein:</label>
+    <input type='checkbox' id =is_hiring' name='is_hiring'>
+    <input type="radio" id = "onsite" name="workmode" value="onsite">
+    <label for="onsite">onsite</label>
+    <input type="radio" id = "hybrid" name="workmode" value="hybrid">
+    <label for="hybrid">hybrid</label>
+    <input type="radio" id = "remote" name="workmode" value="remote">
+    <label for="remote">remote</label>
     <input type='submit'>
 </form>
 </body>
@@ -25,12 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $is_hiring = isset($_POST['is_hiring']);
+    $workmode = $_POST['workmode'];
     $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
-    $sql = "INSERT INTO department (name, is_hiring) VALUES(:name, :is_hiring)";
+    $sql = "INSERT INTO department (name, is_hiring, workmode) VALUES(:name, :is_hiring, :workmode)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':is_hiring', $is_hiring);
+    $stmt->bindParam(':workmode', $workmode);
     $stmt->execute();
     header('Location: ' . 'read_department.php');
+    exit();
 
 }

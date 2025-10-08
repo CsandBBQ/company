@@ -7,3 +7,4 @@ $stmt = $conn->prepare($sql);
 $stmt->bindParam(":id", $id);
 $stmt->execute();
 header('Location: ' . 'read_department.php');
+exit();

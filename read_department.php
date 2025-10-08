@@ -1,6 +1,6 @@
 <?php
 
-function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
+function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'yellow', string $farbe_2 = 'red'): string
 {
     $string = "<table>";
     $string .= "<tr>";
@@ -22,8 +22,21 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
         foreach ($user as $key => $item) {
             $string .= "<td>";
             if ($key === 'is_hiring'){
-               $checked =  $item > 0 ? 'checked' : 'unchecked';
+               $checked =  $item === 1 ? "checked" : "unchecked";
                $string .= "<input type='checkbox' disabled " . $checked . ">";
+            }
+            elseif ($key === 'workmode'){
+                $checked = $item === 'onsite' ? "checked" : "";
+                $string .= "<input type='radio' id = 'onsite' name='workmode' value='onsite' disabled " . $checked .">";
+                $string .= "<label for='onsite'>onsite</label>";
+
+                $checked = $item === 'hybrid' ? "checked" : "";
+                $string .= "<input type='radio' id = 'hybrid' name='workmode' value='hybrid' disabled " . $checked .">";
+                $string .= "<label for='hybrid'>hybrid</label>";
+
+                $checked = $item === 'remote' ? "checked" : "";
+                $string .= "<input type='radio' id = 'remote' name='workmode' value='remote' disabled " . $checked .">";
+                $string .= "<label for='remote'>remote</label>";
             }
             else{
                 $string .= $item;
