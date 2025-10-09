@@ -59,6 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
     $stmt->bindParam(':fname',$fname);
     $stmt->bindParam(':lname',$lname);
     $stmt->execute();
-    header('Location: ' . 'firstread.php');
+    header('Location: ' . 'read_employee.php');
 }
 ?>

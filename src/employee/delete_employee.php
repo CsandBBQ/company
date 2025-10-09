@@ -6,4 +6,4 @@ $sql = 'DELETE FROM employees where id = :id';
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $id);
 $stmt->execute();
-header('Location: ' . 'firstread.php');
+header('Location: ' . 'read_employee.php');

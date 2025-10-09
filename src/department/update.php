@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-$id = $_GET['id'];
+//$id = $_GET['id'];
 $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
 $sql = "SELECT * FROM department WHERE id = :id";
 $stmt = $conn->prepare($sql);
@@ -80,9 +80,9 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":workmode", $workmode);
     $stmt->bindParam(":id", $id);
     $stmt->bindParam(":updated_at", $date);
+    header('Location: ' . '/department/read');
     $stmt->execute();
-    header('Location: ' . 'read_department.php');
-    exit();
+    exit;
 }
 
 

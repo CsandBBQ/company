@@ -78,7 +78,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':workmode', $workmode);
     $stmt->bindParam(':created_at', $date);
     $stmt->execute();
-    header('Location: ' . 'read_department.php');
+    header('Location: ' . '/department/read');
     exit();
 
 }
