@@ -1,7 +1,7 @@
 <?php
 $request = explode('/', $_SERVER['REQUEST_URI']);
-$entity = $request[1];
-$method = $request[2];
+$entity = $request[1] ?? null;
+$method = $request[2] ?? null;
 $id = $request[3] ?? null;
 
 switch ($entity) {
@@ -45,6 +45,10 @@ switch ($entity) {
         }
         break;
 
+
+    case null:
+        require_once "index.html";
+        break;
 
     default:
         echo 404;
