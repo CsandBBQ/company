@@ -102,10 +102,10 @@ $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <nav>
-    <a class="nav" href="http://www.company.sanders.web.bbq./read_department.php"> Departments anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./create_department.php">Neues Department</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./firstread.php"> Angestellte anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./firstcreate.php"> Neuer Angestellter</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
 </nav>
 <?= createTable($array) ?>
 </body>

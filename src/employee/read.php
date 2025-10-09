@@ -27,10 +27,10 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
         }
         $string .= "<td class='link' style='background-color: white'>";
         $id = $user['id'];
-        $string .= "<a href='firstdelete.php?id=$id'>Delete</a>";
+        $string .= "<a href='delete/$id'>Delete</a>";
         $string .= "</td>";
         $string .= "<td class='link' style='background-color: white'>";
-        $string .= "<a href='firstupdate.php?id=$id'>Update</a>";
+        $string .= "<a href='update/$id'>Update</a>";
         $string .= "</td>";
         $string .= "</tr>";
     }
@@ -83,10 +83,10 @@ $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <nav>
-    <a class="nav" href="http://www.company.sanders.web.bbq./read_department.php"> Departments anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./create_department.php">Neues Department</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./firstread.php"> Angestellte anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./firstcreate.php"> Neuer Angestellter</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
 </nav>
 <?= createTable($array) ?>
 </body>

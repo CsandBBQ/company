@@ -28,7 +28,16 @@ switch ($entity) {
     case 'employee':
         switch ($method) {
             case 'create':
-                require_once "../src/employee/create_employee.php";
+                require_once "../src/employee/create.php";
+                break;
+            case 'read':
+                require_once "../src/employee/read.php";
+                break;
+            case 'update':
+                require_once "../src/employee/update.php";
+                break;
+            case 'delete':
+                require_once "../src/employee/delete.php";
                 break;
             default:
                 echo 404;

@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
     </head>
     <body>
     <nav>
-        <a class="nav" href="http://www.company.sanders.web.bbq./read_department.php"> Departments anzeigen</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./create_department.php">Neues Department</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./firstread.php"> Angestellte anzeigen</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./firstcreate.php"> Neuer Angestellter</a>
+        <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
+        <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
+        <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
+        <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
     </nav>
 
     <form action='' method='post'>
@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
     $stmt->bindParam(':fname',$fname);
     $stmt->bindParam(':lname',$lname);
     $stmt->execute();
-    header('Location: ' . 'read_employee.php');
+    header('Location: ' . '/employee/read');
+    exit();
 }
 ?>
