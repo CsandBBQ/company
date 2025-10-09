@@ -10,7 +10,42 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    body{
+        background-color: slategray;
+    }
+
+    nav{
+        background-color: darkblue;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    a.nav:link{
+        color:white;
+        padding-left: 10px;
+    }
+    a.nav:visited{
+        color:white;
+    }
+    a:hover{
+        color:red;
+    }
+    p{
+        color: white;
+        font-size: 20px;
+    }
+
+
+</style>
+</head>
 <body>
+<nav>
+    <a class="nav" href="http://www.company.sanders.web.bbq./read_department.php"> Departments anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./create_department.php">Neues Department</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./firstread.php"> Angestellte anzeigen</a>
+    <a class="nav" href="http://www.company.sanders.web.bbq./firstcreate.php"> Neuer Angestellter</a>
+</nav>
 
 <form action='' method='post'>
     <input type='text' name='name' placeholder='department_name'>
