@@ -1,4 +1,5 @@
 <?php
+require (__DIR__ . '/../db/database.php');
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 <!doctype html>
@@ -70,7 +71,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $workmode = $_POST['workmode'];
     date_default_timezone_set("Europe/Berlin");
     $date= date("Y-m-d H:i:s");
-    $conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
+    $conn = dbcon('localhost', 'company','phpstorm', '123456');
     $sql = "INSERT INTO department (name, is_hiring, workmode,created_at) VALUES(:name, :is_hiring, :workmode, :created_at)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':name', $name);

@@ -1,7 +1,8 @@
 <?php
+require (__DIR__ . '/../db/database.php');
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //$id = $_GET['id'];
-$conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
+$conn = dbcon('localhost', 'company','phpstorm', '123456');
 $sql = "SELECT * FROM department WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":id", $id);

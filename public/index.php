@@ -1,6 +1,6 @@
 <?php
 $request = explode('/', $_SERVER['REQUEST_URI']);
-$entity = $request[1] ?? null;
+$entity = $request[1] ?? "";
 $method = $request[2] ?? null;
 $id = $request[3] ?? null;
 
@@ -46,10 +46,11 @@ switch ($entity) {
         break;
 
 
-    case null:
+    case "":
         require_once "index.html";
         break;
 
     default:
+        http_response_code(404);
         echo 404;
 }

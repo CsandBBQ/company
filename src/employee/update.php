@@ -1,10 +1,11 @@
 <?php
+require (__DIR__ . '/../db/database.php');
 
 if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 
 
     //$id = $_GET['id'];
-    $conn = new PDO('mysql:host=localhost;dbname=company', 'phpstorm', '123456');
+    $conn = dbcon('localhost', 'company','phpstorm', '123456');
     $sql = 'Select * from employees where id = :id';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id);
@@ -65,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $id = $_POST['id'];
-    $conn = new PDO('mysql:host=localhost;dbname=company', 'phpstorm', '123456');
+    $conn = dbcon('localhost', 'company','phpstorm', '123456');
     $sql = "UPDATE  employees set fname = :fname , lname = :lname where id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':fname', $fname);

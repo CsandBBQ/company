@@ -1,4 +1,5 @@
 <?php
+require (__DIR__ . '/../db/database.php');
 
 function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'yellow', string $farbe_2 = 'red'): string
 {
@@ -56,7 +57,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
     return $string;
 }
 
-$conn = new PDO("mysql:host=localhost;dbname=company", "phpstorm", "123456");
+$conn = dbcon('localhost', 'company','phpstorm', '123456');
 $sql = "SELECT * FROM department";
 $stmt = $conn->prepare($sql);
 $stmt->execute();

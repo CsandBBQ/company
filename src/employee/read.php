@@ -1,5 +1,5 @@
 <?php
-
+require (__DIR__ . '/../db/database.php');
 
 function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
 {
@@ -39,7 +39,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
 }
 
 # Verbindung mit der Datenbank mit einem PDO Objekt
-$conn = new PDO('mysql:host=localhost;dbname=company', 'phpstorm', '123456');
+$conn = dbcon('localhost', 'company','phpstorm', '123456');
 #Den Auszuführenden SQL Befehl
 $sql = 'SELECT * FROM employees';
 #Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes

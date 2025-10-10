@@ -1,4 +1,5 @@
 <?php
+require (__DIR__ . '/../db/database.php');
 if ($_SERVER["REQUEST_METHOD"] === 'GET'){
     ?>
     <style>
@@ -53,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $conn = new PDO('mysql:host=localhost;dbname=company','phpstorm','123456');
+    $conn = dbcon('localhost', 'company','phpstorm', '123456');
     $sql = "INSERT INTO employees (fname, lname) VALUES (:fname, :lname)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':fname',$fname);
