@@ -1,4 +1,7 @@
 <?php
+require_once (__DIR__ . '/../config/loader.php');
+
+
 $request = explode('/', $_SERVER['REQUEST_URI']);
 $entity = $request[1] ?? "";
 $method = $request[2] ?? null;

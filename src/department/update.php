@@ -1,5 +1,5 @@
 <?php
-require (__DIR__ . '/../db/database.php');
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //$id = $_GET['id'];
 $conn = dbcon('localhost', 'company','phpstorm', '123456');
