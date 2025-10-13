@@ -52,14 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
 
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $conn = dbcon('localhost', 'company','phpstorm', '123456');
-    $sql = "INSERT INTO employees (fname, lname) VALUES (:fname, :lname)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':fname',$fname);
-    $stmt->bindParam(':lname',$lname);
-    $stmt->execute();
+    $data['fname'] = $_POST['fname'];
+    $data['lname'] = $_POST['lname'];
+    date_default_timezone_set("Europe/Berlin");
+    $data["created_at"] = date("Y-m-d H:i:s");
+    create('employees', $data);
     header('Location: ' . '/employee/read');
     exit();
 }

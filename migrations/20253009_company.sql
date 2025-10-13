@@ -15,6 +15,8 @@ values ('Peter', 'Pan'),
        ('Donald', 'Trump'),
        ('George', 'Busch');
 
+ALTER TABLE employees ADD created_at datetime;
+ALTER TABLE employees ADD updated_at datetime;
 
 create table department
 (

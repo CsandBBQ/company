@@ -88,7 +88,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $stmt->bindParam(":workmode", $workmode);
 //    $stmt->bindParam(":id", $id);
 //    $stmt->bindParam(":updated_at", $date);
-    header('Location: ' . DOMAIN_NAME . 'department/read');
+    header('Location: ' . DOMAIN_NAME . "department/" . $id);
 //    $stmt->execute();
     exit;
 }

@@ -1,6 +1,6 @@
 <?php
 
-function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
+function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'yellow', string $farbe_2 = 'red'): string
 {
     $string = "<table>";
     $string .= "<tr>";
@@ -19,34 +19,23 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             $color = $farbe_2;
         }
         $string .= "<tr  style='background-color: $color'>";
-        foreach ($user as $item) {
+        foreach ($user as $key => $item) {
             $string .= "<td>";
-            $string .= $item;
+            if ($key === "fname" || $key === "lname") {
+                $id = $user['id'];
+                $string .= "<a href='$id'>$item</a>";
+            }
+            else {
+                $string .= $item;
+            }
             $string .= "</td>";
         }
-        $string .= "<td class='link' style='background-color: white'>";
-        $id = $user['id'];
-        $string .= "<a href='delete/$id'>Delete</a>";
-        $string .= "</td>";
-        $string .= "<td class='link' style='background-color: white'>";
-        $string .= "<a href='update/$id'>Update</a>";
-        $string .= "</td>";
-        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
 }
 
-# Verbindung mit der Datenbank mit einem PDO Objekt
-$conn = dbcon('localhost', 'company','phpstorm', '123456');
-#Den Auszuführenden SQL Befehl
-$sql = 'SELECT * FROM employees';
-#Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes
-$stmt = $conn->prepare($sql);
-# Ausführen des SQL-Befehls
-$stmt->execute();
-# Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
-$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$array = findAll("employees");
 
 ?>
 

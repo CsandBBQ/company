@@ -1,18 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === 'GET') {
-
-
-    //$id = $_GET['id'];
-    $conn = dbcon('localhost', 'company','phpstorm', '123456');
-    $sql = 'Select * from employees where id = :id';
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $fname = $result['fname'];
-    $lname = $result['lname'];
-    $id = $result['id'];
+    $result = findById("employees", $id);
 
     ?>
 
@@ -54,25 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 </nav>
 
 <form action='' method='post'>
-    <input type='text' name='fname' placeholder='fname' value='<?= $fname ?>'>
-    <input type='text' name='lname' placeholder='lname' value='<?= $lname ?>'>
+    <input type='text' name='fname' placeholder='fname' value='<?= $result['fname'] ?>'>
+    <input type='text' name='lname' placeholder='lname' value='<?= $result['lname'] ?>'>
     <input type='hidden' name='id' value='<?= $id ?>'>
     <input type='submit'>
 </form>
     <?php
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $id = $_POST['id'];
-    $conn = dbcon('localhost', 'company','phpstorm', '123456');
-    $sql = "UPDATE  employees set fname = :fname , lname = :lname where id = :id";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':fname', $fname);
-    $stmt->bindParam(':lname', $lname);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    header('Location: ' . '/employee/read');
+//    $data["workmode"] = $_POST['workmode'];
+    date_default_timezone_set("Europe/Berlin");
+    $_POST["updated_at"] = date("Y-m-d H:i:s");
+    echo update('employees', $_POST, $id);
+    header('Location: ' . DOMAIN_NAME . "employee/" . $id);
     exit();
 }
 ?>
