@@ -2,5 +2,5 @@
 
 //$id = $_GET['id'];
 echo remove('department', $id);
-//header('Location: ' . '/department/read');
-//exit();
+header('Location: ' . DOMAIN_NAME . 'department/read');
+exit();

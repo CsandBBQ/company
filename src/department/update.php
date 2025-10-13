@@ -2,12 +2,12 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //$id = $_GET['id'];
-$conn = dbcon('localhost', 'company','phpstorm', '123456');
-$sql = "SELECT * FROM department WHERE id = :id";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(":id", $id);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+//$conn = dbcon('localhost', 'company','phpstorm', '123456');
+//$sql = "SELECT * FROM department WHERE id = :id";
+//$stmt = $conn->prepare($sql);
+//$stmt->bindParam(":id", $id);
+//$stmt->execute();
+$result = findById("department", $id);
 $name = $result['name'];
 $is_hiring_box = $result["is_hiring"] === 1 ? "checked" : "unchecked";
 $workmode = $result["workmode"];
@@ -69,7 +69,7 @@ $workmode = $result["workmode"];
 elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $id = $_POST['id'];
 //    $data["name"] = $_POST['name'];
-//    $data["is_hiring"] = isset($_POST['is_hiring']) ? 1 : 0;
+    $_POST['is_hiring'] = isset($_POST['is_hiring']) ? 1 : 0;
 //    $data["workmode"] = $_POST['workmode'];
     date_default_timezone_set("Europe/Berlin");
     $_POST["updated_at"] = date("Y-m-d H:i:s");
@@ -88,7 +88,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $stmt->bindParam(":workmode", $workmode);
 //    $stmt->bindParam(":id", $id);
 //    $stmt->bindParam(":updated_at", $date);
-//    header('Location: ' . '/department/read');
+    header('Location: ' . DOMAIN_NAME . 'department/read');
 //    $stmt->execute();
     exit;
 }

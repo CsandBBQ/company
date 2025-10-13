@@ -129,16 +129,15 @@ function update(string $table, array $data): bool
         $update_string .= ", $item = :$item";
     }
     $update_string = str_replace(', id = :id,', '', $update_string);
+    $update_string = str_replace(', created_at = :created_at', '', $update_string);
     $sql = "UPDATE $table SET $update_string WHERE id = :id";
     $stmt = $conn->prepare($sql);
-    foreach ($data as $key => $value) {
-        $stmt->bindValue(":$key", $value);
-    }
+    change_data($column, $data);
     echo "<pre>";
     var_dump($stmt, $data);
     echo "</pre>";
     $stmt->bindParam(":id", $id);
-    return $stmt->execute();
+    return $stmt->execute($data);
 
 }
 
@@ -151,12 +150,12 @@ function get_column(string $table, PDO $conn):array
     return $column;
 }
 
-function get_diff(array $column, array &$data): array
+function change_data(array $column, array &$data)
 {
     $array_diff =array_diff($column, array_keys($data));
 
     foreach($array_diff as $missing){
-        if ($missing === 'id'){
+        if ($missing === 'id' || $missing === 'created_at' || $missing === 'updated_at'){
             continue;
         }
         $data[$missing] = 0;

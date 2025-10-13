@@ -72,7 +72,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     date_default_timezone_set("Europe/Berlin");
     $data["created_at"] = date("Y-m-d H:i:s");
     echo create('department', $data);
-    //header('Location: ' . '/department/read');
-    //exit();
+    header('Location: ' . DOMAIN_NAME . '/department/read');
+    exit();
 
 }
