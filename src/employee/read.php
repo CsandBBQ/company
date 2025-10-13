@@ -24,8 +24,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             if ($key === "fname" || $key === "lname") {
                 $id = $user['id'];
                 $string .= "<a href='$id'>$item</a>";
-            }
-            else {
+            } else {
                 $string .= $item;
             }
             $string .= "</td>";
@@ -39,35 +38,15 @@ $array = findAll("employees");
 
 ?>
 
-
-<style>
-    body{
-        background-color: slategray;
-    }
-
-    nav{
-        background-color: darkblue;
-        font-size: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    a.nav:link{
-        color:white;
-        padding-left: 10px;
-    }
-    a.nav:visited{
-        color:white;
-    }
-    a:hover{
-        color:red;
-    }
-    p{
-        color: white;
-        font-size: 20px;
-    }
-
-
-</style>
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Document</title>
 </head>
 <body>
 <nav>

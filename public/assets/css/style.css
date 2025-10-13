@@ -1,0 +1,21 @@
+body{
+    background-color: slategray;
+}
+
+nav{
+    background-color: darkblue;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+a.nav:link{
+    color:white;
+    padding-left: 10px;
+}
+a.nav:visited{
+    color:white;
+}
+p{
+    color: white;
+    font-size: 20px;
+}
