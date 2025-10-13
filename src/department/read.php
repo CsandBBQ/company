@@ -21,36 +21,26 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
         $string .= "<tr  style='background-color: $color'>";
         foreach ($user as $key => $item) {
             $string .= "<td>";
-            if ($key === 'is_hiring'){
-               $checked =  $item === 1 ? "checked" : "unchecked";
-               $string .= "<input type='checkbox' disabled " . $checked . ">";
-            }
-            /*elseif ($key === 'workmode'){
-                $checked = $item === 'onsite' ? "checked" : "";
-                $string .= "<input type='radio' id = 'onsite' name='workmode' value='onsite' disabled " . $checked .">";
-                $string .= "<label for='onsite'>onsite</label>";
+            if ($key === 'is_hiring') {
+                $checked = $item === 1 ? "checked" : "unchecked";
+                $string .= "<input type='checkbox' disabled " . $checked . ">";
+            } elseif ($key === 'name') {
+                $id = $user['id'];
+                $string .= "<a href='$id'>$item</a>";
 
-                $checked = $item === 'hybrid' ? "checked" : "";
-                $string .= "<input type='radio' id = 'hybrid' name='workmode' value='hybrid' disabled " . $checked .">";
-                $string .= "<label for='hybrid'>hybrid</label>";
-
-                $checked = $item === 'remote' ? "checked" : "";
-                $string .= "<input type='radio' id = 'remote' name='workmode' value='remote' disabled " . $checked .">";
-                $string .= "<label for='remote'>remote</label>";
-            }*/
-            else{
+            } else {
                 $string .= $item;
             }
             $string .= "</td>";
         }
-        $string .= "<td class='link' style='background-color: white'>";
-        $id = $user['id'];
-        $string .= "<a href='delete/$id'>Delete</a>";
-        $string .= "</td>";
-        $string .= "<td class='link' style='background-color: white'>";
-        $string .= "<a href='update/$id'>Update</a>";
-        $string .= "</td>";
-        $string .= "</tr>";
+//        $string .= "<td class='link' style='background-color: white'>";
+//        $id = $user['id'];
+//        $string .= "<a href='delete/$id'>Delete</a>";
+//        $string .= "</td>";
+//        $string .= "<td class='link' style='background-color: white'>";
+//        $string .= "<a href='update/$id'>Update</a>";
+//        $string .= "</td>";
+//        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
@@ -68,27 +58,31 @@ $array = findAll('department');
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <title>Document</title>
     <style>
-        body{
+        body {
             background-color: slategray;
         }
 
-        nav{
+        nav {
             background-color: darkblue;
             font-size: 20px;
             padding-top: 10px;
             padding-bottom: 10px;
         }
-        a.nav:link{
-            color:white;
+
+        a.nav:link {
+            color: white;
             padding-left: 10px;
         }
-        a.nav:visited{
-            color:white;
+
+        a.nav:visited {
+            color: white;
         }
-        a:hover{
-            color:red;
+
+        a:hover {
+            color: red;
         }
-        p{
+
+        p {
             color: white;
             font-size: 20px;
         }
