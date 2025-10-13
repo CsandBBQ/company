@@ -56,11 +56,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
     return $string;
 }
 
-$conn = dbcon('localhost', 'company','phpstorm', '123456');
-$sql = "SELECT * FROM department";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$array = findAll('department');
 
 ?>
 <!doctype html>
