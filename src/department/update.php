@@ -33,6 +33,7 @@ $workmode = $result["workmode"];
 <form action='' method='post'>
     <input type="text" name="name"  placeholder= "department name" value='<?= $name ?>'>
     <input type="hidden" name="id" value='<?= $id ?>'>
+    <label for="is_hiring">Stellt ein?</label>
     <input type="checkbox" name="is_hiring" <?= $is_hiring_box ?>>
     <input type="radio" id = "onsite" name="workmode" value="onsite" <?= $workmode === "onsite" ? "checked" : ""; ?>>
     <label for="onsite">onsite</label>
