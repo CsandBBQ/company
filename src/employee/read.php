@@ -49,12 +49,7 @@ $array = findAll("employees");
     <title>Document</title>
 </head>
 <body>
-<nav>
-    <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
-</nav>
+<?php include 'assets/nav.html'; ?>
 <?= createTable($array) ?>
 </body>
 </html>

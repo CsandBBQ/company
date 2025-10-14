@@ -24,12 +24,7 @@ $workmode = $result["workmode"];
     <link rel="stylesheet" href="/assets/css/style.css">
     </head>
     <body>
-    <nav>
-        <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
-        <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
-    </nav>
+    <?php include 'assets/nav.html'; ?>
 <form action='' method='post'>
     <input type="text" name="name"  placeholder= "department name" value='<?= $name ?>'>
     <input type="hidden" name="id" value='<?= $id ?>'>

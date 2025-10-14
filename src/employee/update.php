@@ -15,13 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
         <link rel="stylesheet" href="/assets/css/style.css">
     </head>
     <body>
-<nav>
-    <a class="nav" href="http://www.company.sanders.web.bbq./department/read"> Departments anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./department/create">Neues Department</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./employee/read"> Angestellte anzeigen</a>
-    <a class="nav" href="http://www.company.sanders.web.bbq./employee/create"> Neuer Angestellter</a>
-</nav>
-
+    <?php include 'assets/nav.html'; ?>
 <form action='' method='post'>
     <input type='text' name='fname' placeholder='fname' value='<?= $result['fname'] ?>'>
     <input type='text' name='lname' placeholder='lname' value='<?= $result['lname'] ?>'>
