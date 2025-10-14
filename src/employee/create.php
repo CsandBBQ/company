@@ -32,12 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
 
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $data['fname'] = $_POST['fname'];
-    $data['lname'] = $_POST['lname'];
     date_default_timezone_set("Europe/Berlin");
-    $data["created_at"] = date("Y-m-d H:i:s");
-    create('employees', $data);
-    header('Location: ' . '/employee/read');
+    $_POST["created_at"] = date("Y-m-d H:i:s");
+    $id = create('employees', $_POST);
+    header('Location: ' . DOMAIN_NAME . 'employee/' . $id);
     exit();
 }
 ?>

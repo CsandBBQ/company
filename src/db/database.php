@@ -61,7 +61,7 @@ function create2(string $table, array $data): bool
 
 
 }
-function create(string $table, array $data): bool
+function createalt(string $table, array $data): bool
 {
     //Ziel:  $sql = "INSERT INTO employees (fname, lname) VALUES (:fname, :lname)";
     $conn = dbcon();
@@ -138,6 +138,28 @@ function update(string $table, array $data): bool
     echo "</pre>";
     $stmt->bindParam(":id", $id);
     return $stmt->execute($data);
+
+}
+
+function create(string $table, array $data): int
+{
+    $conn = dbcon();
+    $column= get_column($table, $conn);
+    $column_string = '';
+    $data_string = '';
+    foreach ($column as $item) {
+        $column_string .= ", $item";
+        $data_string .= ", :$item";
+    }
+    $column_string = str_replace(', id,', '', $column_string);
+    $column_string = str_replace(', updated_at', '', $column_string);
+    $data_string = str_replace(', :id,', '', $data_string);
+    $data_string = str_replace(', :updated_at', '', $data_string);
+    $sql = "INSERT INTO $table ($column_string) VALUES ($data_string)";
+    $stmt = $conn->prepare($sql);
+    change_data($column, $data);
+    $stmt->execute($data);
+    return $conn->lastInsertId();
 
 }
 

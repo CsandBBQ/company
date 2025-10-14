@@ -33,14 +33,6 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             }
             $string .= "</td>";
         }
-//        $string .= "<td class='link' style='background-color: white'>";
-//        $id = $user['id'];
-//        $string .= "<a href='delete/$id'>Delete</a>";
-//        $string .= "</td>";
-//        $string .= "<td class='link' style='background-color: white'>";
-//        $string .= "<a href='update/$id'>Update</a>";
-//        $string .= "</td>";
-//        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
