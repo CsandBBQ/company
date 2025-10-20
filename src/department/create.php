@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-include 'assets/create_department.html';
+include '../view/department/create.html';
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //    $data["name"] = $_POST['name'];

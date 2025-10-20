@@ -7,40 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //$stmt = $conn->prepare($sql);
 //$stmt->bindParam(":id", $id);
 //$stmt->execute();
-$result = findById("department", $id);
-$name = $result['name'];
-$is_hiring_box = $result["is_hiring"] === 1 ? "checked" : "unchecked";
-$workmode = $result["workmode"];
+$data = findById("department", $id);
+$name = $data['name'];
+$is_hiring_box = $data["is_hiring"] === 1 ? "checked" : "unchecked";
+$workmode = $data["workmode"];
 
-?>
-
-    <!doctype html>
-    <html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport'
-          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    </head>
-    <body>
-    <?php include 'assets/nav.html'; ?>
-<form action='' method='post'>
-    <input type="text" name="name"  placeholder= "department name" value='<?= $name ?>'>
-    <input type="hidden" name="id" value='<?= $id ?>'>
-    <label for="is_hiring">Stellt ein?</label>
-    <input type="checkbox" name="is_hiring" <?= $is_hiring_box ?>>
-    <input type="radio" id = "onsite" name="workmode" value="onsite" <?= $workmode === "onsite" ? "checked" : ""; ?>>
-    <label for="onsite">onsite</label>
-    <input type="radio" id = "hybrid" name="workmode" value="hybrid" <?= $workmode === "hybrid" ? "checked" : ""; ?>>
-    <label for="hybrid">hybrid</label>
-    <input type="radio" id = "remote" name="workmode" value="remote" <?= $workmode === "remote" ? "checked" : ""; ?>>
-    <label for="remote">remote</label>
-    <input type="submit">
-</form>
-</body>
-
-<?php
+    require_once '../view/department/update.html';
 }
 elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $id = $_POST['id'];
