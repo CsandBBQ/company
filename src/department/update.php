@@ -8,11 +8,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //$stmt->bindParam(":id", $id);
 //$stmt->execute();
 $data = findById("department", $id);
+var_dump($data);
 $name = $data['name'];
-$is_hiring_box = $data["is_hiring"] === 1 ? "checked" : "unchecked";
+$data["checked"] = $data["is_hiring"] === 1 ? "checked" : "unchecked";
 $workmode = $data["workmode"];
+$data["onsite"] = "";
+$data["hybrid"] = "";
+$data["remote"] = "";
+$data[$data["workmode"]] = "checked";
 
-    require_once '../view/department/update.html';
+var_dump($data);
+
+    echo render('department_update_view', $data);
 }
 elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $id = $_POST['id'];
@@ -21,7 +28,8 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $data["workmode"] = $_POST['workmode'];
     date_default_timezone_set("Europe/Berlin");
     $_POST["updated_at"] = date("Y-m-d H:i:s");
-    echo update('department', $_POST, $id);
+    var_dump($_POST);
+    echo update('department', $_POST);
 
 //    $name = $_POST['name'];
 //    $workmode = $_POST['workmode'];
@@ -36,7 +44,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $stmt->bindParam(":workmode", $workmode);
 //    $stmt->bindParam(":id", $id);
 //    $stmt->bindParam(":updated_at", $date);
-    header('Location: ' . DOMAIN_NAME . "department/" . $id);
+    //header('Location: ' . DOMAIN_NAME . "department/" . $id);
 //    $stmt->execute();
     exit;
 }

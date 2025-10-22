@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-include '../view/department/create.html';
+echo (render('department_create_view', []));
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //    $data["name"] = $_POST['name'];

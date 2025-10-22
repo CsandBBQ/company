@@ -7,8 +7,8 @@
 //$stmt->bindParam(":id", $id);
 //$stmt->execute();
     $data = findById("department", $id);
-    $is_hiring = $data["is_hiring"] == 1 ? "Ja" : "Nein";
+    //$is_hiring = $data["is_hiring"] == 1 ? "Ja" : "Nein";
 
-require_once '../view/department/readOne.html';
+echo (render('department_readOne_view', $data));
 ?>
 

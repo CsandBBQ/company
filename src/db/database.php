@@ -121,6 +121,7 @@ function createalt(string $table, array $data): bool
 function update(string $table, array $data): bool
 {
     $conn = dbcon();
+    var_dump($data);
 //    $stmt = $conn->prepare("DESCRIBE $table");
 //    $stmt->execute();
     $column= get_column($table, $conn);
@@ -134,9 +135,8 @@ function update(string $table, array $data): bool
     $stmt = $conn->prepare($sql);
     change_data($column, $data);
     echo "<pre>";
-    var_dump($stmt, $data);
     echo "</pre>";
-    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":id", $data["id"]);
     return $stmt->execute($data);
 
 }
